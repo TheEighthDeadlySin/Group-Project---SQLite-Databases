@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS 'Class' (
 );
 
 CREATE TABLE IF NOT EXISTS 'ClassStudents' (
-  'Student' INTEGER NOT NULL,
-  'Class' INTEGER NOT NULL,
-  FOREIGN KEY('Student') REFERENCES 'User'('ID'),
-  FOREIGN KEY('Class') REFERENCES 'Class'('ID')
+  'StudentID' INTEGER NOT NULL,
+  'ClassID' INTEGER NOT NULL,
+  FOREIGN KEY('StudentID') REFERENCES 'User'('ID'),
+  FOREIGN KEY('ClassID') REFERENCES 'Class'('ID')
 );
 
 CREATE TABLE IF NOT EXISTS 'Material' (
@@ -34,4 +34,12 @@ CREATE TABLE IF NOT EXISTS 'Assignment' (
   'Contents' TEXT,
   'Deadline' INTEGER NOT NULL,
   FOREIGN KEY('ClassID') REFERENCES 'Class'('ID')
+);
+
+CREATE TABLE IF NOT EXISTS 'StudentAssignment' (
+  'StudentID' INTEGER NOT NULL,
+  'AssignmentID' INTEGER NOT NULL,
+  'Status' TEXT NOT NULL, -- Assigned, Submitted, Returned, Marked, Missing, Submitted Late 
+  FOREIGN KEY('StudentID') REFERENCES 'User'('ID'),
+  FOREIGN KEY('AssignmentID') REFERENCES 'Assignment'('ID')
 );
