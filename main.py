@@ -1,3 +1,5 @@
 import sqlite3
 
-print('egg')
+def egg_function() # create a function for egg
+    print('egg') # give the output to the user
+    egg_function() # call the egg function to resend the output the user failed to respond to
